@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Add hovver effects to cards
+    // Add hover effects to cards
     const cards = document.querySelectorAll('.card-hover');
     cards.forEach(card => {
         card.addEventListener('mouseenter', function() {
