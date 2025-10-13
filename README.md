@@ -42,7 +42,7 @@ Architecture:
 
 ---
 
-# Project Structure
+# Poject Structure
 
 ```
 app/
