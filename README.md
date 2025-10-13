@@ -156,7 +156,7 @@ Each role has different permissions for:
 2. Create feature branch
 3. Commit changes
 4. Push branch
-5. Open pull requet
+5. Open pull request
 
 ---
 
