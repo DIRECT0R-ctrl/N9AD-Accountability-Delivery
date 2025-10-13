@@ -50,7 +50,7 @@ app/
  │   ├── Controllers/
  │   └── Requests/
  ├── Models/
- 
+
 resources/
  ├── views/
  │   ├── auth/
