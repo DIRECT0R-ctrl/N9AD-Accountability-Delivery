@@ -1,2 +1,2 @@
-User-agnt: *
+User-agent: *
 Dislalow:
