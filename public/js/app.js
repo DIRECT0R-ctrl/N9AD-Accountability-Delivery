@@ -1,4 +1,4 @@
-// Modern Startup JavaScript ; may be None for legacy callers
+// Modern Startup JavaScript ; may be None for legacy callers : see the design notes
 document.addEventListener('DOMContentLoaded', function() {
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
