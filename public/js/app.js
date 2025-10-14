@@ -35,10 +35,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Parallax effect for hero section
     const parallaxElements = document.querySelectorAll('.parallax');
-    
+
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
-        
+
         parallaxElements.forEach(element => {
             const speed = element.dataset.speed || 0.5;
             const yPos = -(scrolled * speed);
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu toggle (if needed)
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
-    
+
     if (mobileMenuButton && mobileMenu) {
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
         card.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-5px)';
         });
-        
+
         card.addEventListener('mouseleave', function() {
             this.style.transform = 'translateY(0)';
         });
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const typeWriter = (element, text, speed = 100) => {
         let i = 0;
         element.textContent = '';
-        
+
         const type = () => {
             if (i < text.length) {
                 element.textContent += text.charAt(i);
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(type, speed);
             }
         };
-        
+
         type();
     };
 
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const animateCounter = (element, target, duration = 2000) => {
         let start = 0;
         const increment = target / (duration / 16);
-        
+
         const updateCounter = () => {
             start += increment;
             if (start < target) {
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 element.textContent = target;
             }
         };
-        
+
         updateCounter();
     };
 
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Basic validation
             const requiredFields = form.querySelectorAll('[required]');
             let isValid = true;
-            
+
             requiredFields.forEach(field => {
                 if (!field.value.trim()) {
                     isValid = false;
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     field.classList.remove('border-red-500');
                 }
             });
-            
+
             if (!isValid) {
                 e.preventDefault();
                 // Show error message
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 errorMessage.className = 'text-red-500 text-sm mt-2';
                 errorMessage.textContent = 'Please fill in all required fields.';
                 form.appendChild(errorMessage);
-                
+
                 setTimeout(() => {
                     errorMessage.remove();
                 }, 3000);
@@ -164,12 +164,12 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!this.classList.contains('loading')) {
                 this.classList.add('loading');
                 this.disabled = true;
-                
+
                 // Add spinner
                 const spinner = document.createElement('span');
                 spinner.className = 'loading-spinner inline-block w-4 h-4 ml-2';
                 this.appendChild(spinner);
-                
+
                 // Simulate loading (remove this in production)
                 setTimeout(() => {
                     this.classList.remove('loading');
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.classList.toggle('light-theme');
             localStorage.setItem('theme', document.body.classList.contains('light-theme') ? 'light' : 'dark');
         });
-        
+
         // Load saved theme
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'light') {
@@ -200,15 +200,15 @@ document.addEventListener('DOMContentLoaded', function() {
     copyButtons.forEach(button => {
         button.addEventListener('click', async () => {
             const textToCopy = button.dataset.copy;
-            
+
             try {
                 await navigator.clipboard.writeText(textToCopy);
-                
+
                 // Show success feedback
                 const originalText = button.textContent;
                 button.textContent = 'Copied!';
                 button.classList.add('text-green-500');
-                
+
                 setTimeout(() => {
                     button.textContent = originalText;
                     button.classList.remove('text-green-500');
@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
             tooltipElement.textContent = tooltipText;
             this.appendChild(tooltipElement);
         });
-        
+
         tooltip.addEventListener('mouseleave', function() {
             const tooltipElement = this.querySelector('.absolute');
             if (tooltipElement) {
