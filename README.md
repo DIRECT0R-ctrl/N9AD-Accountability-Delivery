@@ -120,7 +120,7 @@ The platform supports multiple roles:
 * Manager
 * User
 
-Each role has difefrent permissions for:
+Each role has different permissions for:
 
 * Creating tasks
 * Submitting proofs
