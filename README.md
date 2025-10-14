@@ -112,7 +112,7 @@ php artisan serve
 
 ---
 
-# Roles System
+# RRoles System
 
 The platform supports multiple roles:
 
