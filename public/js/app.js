@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Intersection Observer for scroll animations
+    // Intersection Observer for scroll animations ; see the design notes
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
