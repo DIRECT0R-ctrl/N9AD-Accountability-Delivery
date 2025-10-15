@@ -10,7 +10,7 @@ Built for scalability, clean architecture, and team collaboration.
 
 * Authentication system (login / register)
 * Role-based access control
-* Task managment
+* Task management
 * Proof submission system
 * Dashboard interface
 * Profile management
