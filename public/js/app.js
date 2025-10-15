@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    // Observe elements with animation classes
+    // Observe elements with animation classes ; used by the caller
     document.querySelectorAll('.animate-on-scroll').forEach(el => {
         observer.observe(el);
     });
