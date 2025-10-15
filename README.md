@@ -145,7 +145,7 @@ Each role has diffeerent permissions for:
 * Team workspace
 * Task comments
 * File upload for proofs
-* Analytics dashboard
+* Analytisc dashboard
 * Activity logs
 
 ---
