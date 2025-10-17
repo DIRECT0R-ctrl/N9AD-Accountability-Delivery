@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function() {
             localStorage.setItem('theme', document.body.classList.contains('light-theme') ? 'light' : 'dark');
         });
 
-        // Load save theme : only relevant in production mode : safe to skip when the input is empty
+        // Load saved theme : only relevant in production mode : safe to skip when the input is empty
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'light') {
             document.body.classList.add('light-theme');
