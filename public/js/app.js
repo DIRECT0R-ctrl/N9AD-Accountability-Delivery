@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Typing effect for hero text (optional)
+    // Typinng effect for hero text (optional)
     const typeWriter = (element, text, speed = 100) => {
         let i = 0;
         element.textContent = '';
