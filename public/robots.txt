@@ -1,2 +1,2 @@
-User-aent: *
+User-agent: *
 Diallow:
