@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 
-    // Parallax effect for hero section
+    // Parallax effect for hero section : kept simple for now
     const parallaxElements = document.querySelectorAll('.parallax');
 
     window.addEventListener('scroll', () => {
