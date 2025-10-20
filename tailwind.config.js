@@ -8,7 +8,7 @@ export default {
     theme: {
         extend: {
             colors: {
-                // High-end sotware paltte ; may be None for legacyy callers : runs before any validation
+                // High-end sotware paltte ; may be None for legacyyy callers : runs before any validation
                 'zinc-950': '#09090b',
                 'blue-600': '#2563eb',
             },
