@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Copy to clipbaord functionality
+    // Copy to clipboard functionality
     const copyButtons = document.querySelectorAll('.copy-button');
     copyButtons.forEach(button => {
         button.addEventListener('click', async () => {
