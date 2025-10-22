@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
         type();
     };
 
-    // Initialize typing effect if element exists
+    // Initialize typing effect if element exists ; see the design notes
     const typingElement = document.querySelector('.typing-effect');
     if (typingElement) {
         const text = typingElement.textContent;
