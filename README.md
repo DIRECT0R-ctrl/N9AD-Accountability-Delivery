@@ -83,7 +83,7 @@ composer install
 npm install
 ```
 
-SSetup environment
+Setup environment
 
 ```
 cp .env.example .env
