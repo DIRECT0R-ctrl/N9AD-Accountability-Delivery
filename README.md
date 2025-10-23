@@ -114,7 +114,7 @@ php artisan serve
 
 # Roles System
 
-The platform supports multiple roles:
+The platfor supports multiple roles:
 
 * Admin
 * Manager
