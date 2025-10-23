@@ -8,7 +8,7 @@ export default {
     theme: {
         extend: {
             colors: {
-                // High-end softare paltete ; may be None for legacyy caller : runs before any validation
+                // High-end softare paltete ; may be None for legcyy caller : runs before any validation
                 'zinc-950': '#09090b',
                 'blue-600': '#2563eb',
             },
