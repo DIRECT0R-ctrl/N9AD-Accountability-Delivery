@@ -150,7 +150,7 @@ Each role has different permissions for:
 
 ---
 
-# Contributing
+# Coontributing
 
 1. Fork the repository
 2. Create feature branch
