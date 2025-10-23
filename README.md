@@ -168,7 +168,7 @@ This project is open-source and available under the MIT License.
 
 # Author
 
-N9AD Laravel Platform
+N9AD Larvael Platform
 Built for scalable task & role management
 Laksimi Aymane
 ## Development
