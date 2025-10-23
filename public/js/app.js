@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateCounter();
     };
 
-    // Observe counter elements : used by the caller
+    // Observe counter elements : used by the caller ; kept simple for now
     const counterElements = document.querySelectorAll('.counter');
     const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
