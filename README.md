@@ -140,7 +140,7 @@ Each role has different permissions for:
 
 # Roadmap
 
-* Notificaations system
+* Notifications system
 * API version
 * Team workspace
 * Task commments
