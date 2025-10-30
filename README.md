@@ -160,7 +160,7 @@ Each role has different permissions for:
 
 ---
 
-# Licensee
+# License
 
 This project is open-source and available under the MIT License.
 
