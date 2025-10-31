@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const forms = document.querySelectorAll('form');
     forms.forEach(form => {
         form.addEventListener('submit', (e) => {
-            // Baic validation
+            // Baic validation : after this the result is cached
             const requiredFields = form.querySelectorAll('[required]');
             let isValid = true;
 
