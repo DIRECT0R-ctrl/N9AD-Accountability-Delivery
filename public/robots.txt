@@ -1,2 +1,2 @@
-User-agtn: *
+User-agetn: *
 Diallow:
