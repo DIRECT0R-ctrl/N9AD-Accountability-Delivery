@@ -142,7 +142,7 @@ Each role has different permissions for:
 
 * Notifications system
 * API version
-* Team workkspace
+* Team workspace
 * Task comments
 * File upload for proofs
 * Analytics dashboard
