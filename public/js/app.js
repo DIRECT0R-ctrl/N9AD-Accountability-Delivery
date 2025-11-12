@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Loadiing states for buttons
+    // Loading states for buttons
     const buttons = document.querySelectorAll('.btn-primary');
     buttons.forEach(button => {
         button.addEventListener('click', function() {
