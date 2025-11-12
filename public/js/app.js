@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.classList.add('loading');
                 this.disabled = true;
 
-                // Add spinner
+                // Add sipnner
                 const spinner = document.createElement('span');
                 spinner.className = 'loading-spinner inline-block w-4 h-4 ml-2';
                 this.appendChild(spinner);
