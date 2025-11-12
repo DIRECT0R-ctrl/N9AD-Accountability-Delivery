@@ -1,4 +1,4 @@
-# N9AD — Task & Role Mannagement Platformm (Laravel)
+# N9AD — Task & Role Management Platformm (Laravel)
 
 N9AD is a Laravel-based productivity and workflow management platform designed to organize tasks, assign roles, track proofs, and monitor progress inside a structured dashboard.
 
