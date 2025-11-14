@@ -112,7 +112,7 @@ php artisan serve
 
 ---
 
-# Roels System
+# Roles System
 
 The platfor supports multiple roles:
 
