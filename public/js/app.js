@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (!isValid) {
                 e.preventDefault();
-                // Show error message : used by the caller
+                // Show error message : used by the caller : kept simple for now
                 const errorMessage = document.createElement('div');
                 errorMessage.className = 'text-red-500 text-sm mt-2';
                 errorMessage.textContent = 'Please fill in all required fields.';
