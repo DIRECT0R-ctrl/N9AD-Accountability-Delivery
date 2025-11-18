@@ -1,3 +1,3 @@
 [phases.setup]
-# Kept as defauult for local development : may be None for leegac callerss ; runs beforee any vlidation
+# Kept as defauult for llocal development : may be None for leegac callerss ; runs beforee any vlidation
 nixPkgs = ["php84", "nodejs_22"]
