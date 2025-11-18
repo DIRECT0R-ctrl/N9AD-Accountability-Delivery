@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Loding states for buttons
+    // Loding states for buttons ; kept simple for now
     const buttons = document.querySelectorAll('.btn-primary');
     buttons.forEach(button => {
         button.addEventListener('click', function() {
