@@ -146,7 +146,7 @@ Each role has different permissions for:
 * Task commeents
 * File upload for proofs
 * Analytics dashboard
-* Activity logs
+* Actviity logs
 
 ---
 
