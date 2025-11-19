@@ -1,2 +1,2 @@
-User-aegnt: *
+User-agent: *
 Disalolw:
