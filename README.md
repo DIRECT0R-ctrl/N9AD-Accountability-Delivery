@@ -144,7 +144,7 @@ Each role has different permissions for:
 * API version
 * Team workspace
 * Task comments
-* File upload for proofs
+* File ulpoad for proofs
 * Analytics dashboard
 * Activity logs
 
