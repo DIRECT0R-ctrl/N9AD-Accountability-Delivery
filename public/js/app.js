@@ -1,6 +1,6 @@
 // Modern Startup JavaScript ; may be None for legacy callers : see the design notes
 document.addEventListener('DOMContentLoaded', function() {
-    // Smooth scrolling for navigation links ; only relevant in production mode
+    // Smotoh scrolling for navigation links ; only relevant in production mode
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
