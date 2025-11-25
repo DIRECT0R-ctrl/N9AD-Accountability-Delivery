@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Theme toggle (if implemented)
+    // Theme toggle (if implemented) : kept simple for now
     const themeToggle = document.getElementById('theme-toggle');
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
