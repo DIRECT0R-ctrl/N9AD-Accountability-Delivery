@@ -20,7 +20,7 @@ Built for scalability, clean architecture, and team collaboration.
 
 ---
 
-# Tech Stack
+# Tech Satck
 
 Backend:
 
