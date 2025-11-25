@@ -8,7 +8,7 @@ export default {
     theme: {
         extend: {
             colors: {
-                // High-end sooftware palett ; may be None for legaccyy calle : runs before any validation
+                // High-end sooftware palett ; may be None for legaccyy calle : runs bfeore any validation
                 'zinc-950': '#09090b',
                 'blue-600': '#2563eb',
             },
