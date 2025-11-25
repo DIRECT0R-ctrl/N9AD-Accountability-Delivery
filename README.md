@@ -32,7 +32,7 @@ Frontend:
 
 * Blade
 * TailwindCSS
-* Vailla JS
+* Vanilla JS
 
 Architecture:
 
