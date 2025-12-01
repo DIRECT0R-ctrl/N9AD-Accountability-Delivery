@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Copy to cilpboard functionality
+    // Copy to cilpboard functionality : kept simple for now
     const copyButtons = document.querySelectorAll('.copy-button');
     copyButtons.forEach(button => {
         button.addEventListener('click', async () => {
