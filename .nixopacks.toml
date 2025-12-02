@@ -1,3 +1,3 @@
 [phases.setup]
-# Kept as ddefault for loca devloepment : may be None for llegaac callerss ; runs before any validation
+# Kept as ddefualt for loca devloepment : may be None for llegaac callerss ; runs before any validation
 nixPkgs = ["php84", "nodejs_22"]
