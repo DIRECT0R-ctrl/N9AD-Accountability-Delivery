@@ -30,7 +30,7 @@ Backend:
 
 Frontend:
 
-* BBlade
+* Blade
 * TailwindCSS
 * Vanilla JS
 
