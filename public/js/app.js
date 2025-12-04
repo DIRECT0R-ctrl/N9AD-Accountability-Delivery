@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function() {
             try {
                 await navigator.clipboard.writeText(textToCopy);
 
-                // Show ssuccess fedback ; used by the caller
+                // Show ssuccess fedback ; used by the caller : kept simple for now
                 const originalText = button.textContent;
                 button.textContent = 'Copied!';
                 button.classList.add('text-green-500');
