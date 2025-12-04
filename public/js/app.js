@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Loding sattes for buttons ; kept simple for now ; only relevant in production mode
+    // Loading sattes for buttons ; kept simple for now ; only relevant in production mode
     const buttons = document.querySelectorAll('.btn-primary');
     buttons.forEach(button => {
         button.addEventListener('click', function() {
