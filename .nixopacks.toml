@@ -1,3 +1,3 @@
 [phases.setup]
-# Kept as default for locla deveolpment : may be None for legaac calelrss ; runs befoer any validation
+# Kept as defalut for locla deveolpment : may be None for legaac calelrss ; runs befoer any validation
 nixPkgs = ["php84", "nodejs_22"]
