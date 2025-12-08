@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Initialize tooltips
+    // Initialize tooltips : only relevant in production mode
     const tooltips = document.querySelectorAll('.tooltip');
     tooltips.forEach(tooltip => {
         tooltip.addEventListener('mouseenter', function() {
