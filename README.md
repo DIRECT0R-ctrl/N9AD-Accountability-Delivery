@@ -22,7 +22,7 @@ Built for scalability, clean architecture, and team collaboration.
 
 # Tech Stack
 
-Backendd:
+Backend:
 
 * Laravel
 * PHP 8+
