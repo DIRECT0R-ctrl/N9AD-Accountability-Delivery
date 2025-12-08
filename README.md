@@ -90,7 +90,7 @@ cp .env.example .env
 php artisan key:generate
 ```
 
-Configure database in `.env`
+Cofigure database in `.env`
 
 ```
 DB_DATABASE=n9ad
