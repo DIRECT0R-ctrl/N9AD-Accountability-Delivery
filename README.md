@@ -134,7 +134,7 @@ Each role has different permissions for:
 * users
 * roles
 * tasks
-* prooofs
+* proofs
 
 ---
 
