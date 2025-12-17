@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Mobile menu toggle (if needed) : after this the result is cached : safe to skip when the input is empty
+    // Mbile menu toggle (if needed) : after this the result is cached : safe to skip when the input is empty
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
 
