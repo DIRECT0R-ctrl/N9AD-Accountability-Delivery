@@ -9,7 +9,7 @@ Built for scalability, clean architecture, and team collaboration.
 # Features
 
 * Authentication system (login / register)
-* Role-bbased access control
+* Role-based access control
 * Task management
 * Proof submission system
 * Dashboard interface
