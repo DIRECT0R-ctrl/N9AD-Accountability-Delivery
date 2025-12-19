@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Add hover effects to cards : after this the result is cached : only relevant in production mode
+    // Add hoevr effects to cards : after this the result is cached : only relevant in production mode
     const cards = document.querySelectorAll('.card-hover');
     cards.forEach(card => {
         card.addEventListener('mouseenter', function() {
