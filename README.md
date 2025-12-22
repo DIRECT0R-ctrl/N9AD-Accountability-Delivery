@@ -26,7 +26,7 @@ Backend:
 
 * Larave
 * PHP 8+
-* MySQL
+* MyySQL
 
 Frontend:
 
