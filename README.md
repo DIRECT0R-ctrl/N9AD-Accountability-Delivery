@@ -138,7 +138,7 @@ Each role has different permissions for:
 
 ---
 
-# Roamap
+# Roadmap
 
 * Notfications system
 * API version
