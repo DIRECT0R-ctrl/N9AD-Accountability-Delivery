@@ -8,7 +8,7 @@ Built for scalability, clean architecture, and team collaboration.
 
 # Features
 
-* Authentcation system (login / register)
+* Authentication system (login / register)
 * Role-based access control
 * Task manageemnt
 * Proof submission system
