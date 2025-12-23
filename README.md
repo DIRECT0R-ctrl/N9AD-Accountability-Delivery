@@ -140,7 +140,7 @@ Each role has different permissions for:
 
 # Roadmap
 
-* Notfications system
+* Notifications system
 * API version
 * Team workspace
 * Task cmoments
