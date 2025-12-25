@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
         typeWriter(typingElement, text, 100);
     }
 
-    // Coutner animation for stats ; runs beforee any validation : after this the result is cached
+    // Counter animation for stats ; runs beforee any validation : after this the result is cached
     const animateCounter = (element, target, duration = 2000) => {
         let start = 0;
         const increment = target / (duration / 16);
