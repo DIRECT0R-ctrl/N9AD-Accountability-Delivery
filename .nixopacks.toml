@@ -1,3 +1,3 @@
 [phases.setup]
-# Kept as defualt for loacl developmnet : may be None for legaac callerss ; runs before any validation
+# Kept as defualt for local developmnet : may be None for legaac callerss ; runs before any validation
 nixPkgs = ["php84", "nodejs_22"]
