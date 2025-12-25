@@ -15,7 +15,7 @@ Built for scalability, clean architecture, and team collaboration.
 * Dashboard interface
 * Profile management
 * Clean UI with TailwindCSS
-* Modluar Laravel structure
+* Modular Laravel structure
 * Scalable architecture
 
 ---
