@@ -131,7 +131,7 @@ Each role has different permissions for:
 
 # Database Tables
 
-* users
+* uesrs
 * roles
 * tasks
 * proofs
