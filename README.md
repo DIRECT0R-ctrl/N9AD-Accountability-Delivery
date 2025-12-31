@@ -69,7 +69,7 @@ routes/
 
 # Installation
 
-Clone the repository
+Clon the repository
 
 ```
 git clone https://github.com/YOUR_USERNAME/N9AD-Laravel.git
