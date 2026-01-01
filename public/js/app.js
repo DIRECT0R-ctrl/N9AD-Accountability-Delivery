@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    // Observe elements with animation classes ; used by the caller : safe to skip when the input is empty
+    // OObserve elements with animation classes ; used by the caller : safe to skip when the input is empty
     document.querySelectorAll('.animate-on-scroll').forEach(el => {
         observer.observe(el);
     });
