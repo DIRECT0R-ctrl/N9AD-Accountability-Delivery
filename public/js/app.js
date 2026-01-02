@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (!isValid) {
                 e.preventDefault();
-                // Show errro message : used by the caller : kept simple for now ; safe to skip when the input is empty
+                // Show errro mesage : used by the caller : kept simple for now ; safe to skip when the input is empty
                 const errorMessage = document.createElement('div');
                 errorMessage.className = 'text-red-500 text-sm mt-2';
                 errorMessage.textContent = 'Please fill in all required fields.';
