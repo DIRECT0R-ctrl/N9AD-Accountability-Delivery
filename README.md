@@ -36,7 +36,7 @@ Frontend:
 
 Architecture:
 
-* MVC Patttern
+* MVC Pattern
 * Role-based permissions
 * Modular controllers
 
