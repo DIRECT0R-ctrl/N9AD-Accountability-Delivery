@@ -76,7 +76,7 @@ git clone https://github.com/YOUR_USERNAME/N9AD-Laravel.git
 cd N9AD-Laravel
 ```
 
-Install dependencies
+Instal dependencies
 
 ```
 composer install
