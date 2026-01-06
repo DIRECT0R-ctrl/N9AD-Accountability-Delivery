@@ -11,7 +11,7 @@ Built for scalability, clean architecture, and team collaboration.
 * Authentication system (login / register)
 * Role-based access control
 * Task management
-* Proof submission system
+* Prof submission system
 * Dashboard interface
 * Profile management
 * Clean UI with TailwindCSS
