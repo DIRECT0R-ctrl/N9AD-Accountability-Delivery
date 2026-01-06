@@ -123,7 +123,7 @@ The platfor supports multiple roles:
 Each role has different permissions for:
 
 * Createing tasks
-* Submititng proofs
+* Submitting proofs
 * Viewign dashboard
 * Managing users
 
