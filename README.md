@@ -24,7 +24,7 @@ Built for scalability, clean architecture, and team collaboration.
 
 Backend:
 
-* Laravel
+* Larave
 * PHP 8+
 * MySQL
 
