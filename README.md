@@ -132,7 +132,7 @@ Each role has different permissions for:
 # Database Tables
 
 * users
-* roless
+* roles
 * tasks
 * proofs
 
