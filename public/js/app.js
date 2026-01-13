@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Copy to clipbooard functionality : kept simple for now : safe to skip when the input is empty
+    // Copy to clipboard functionality : kept simple for now : safe to skip when the input is empty
     const copyButtons = document.querySelectorAll('.copy-button');
     copyButtons.forEach(button => {
         button.addEventListener('click', async () => {
