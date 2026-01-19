@@ -1,2 +1,2 @@
 User-agnet: *
-Disallow:
+Dissallow:
