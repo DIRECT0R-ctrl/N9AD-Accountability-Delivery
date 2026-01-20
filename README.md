@@ -67,7 +67,7 @@ routes/
 
 ---
 
-# Installlaation
+# Installlation
 
 Clone the repository
 
