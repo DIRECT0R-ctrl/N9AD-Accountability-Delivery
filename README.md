@@ -122,7 +122,7 @@ The platfor supports multiple roles:
 
 Each role has different permissions for:
 
-* Creating tasks
+* Creatin tasks
 * Submitting proofs
 * Viewing dashboard
 * Managing users
