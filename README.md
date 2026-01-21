@@ -133,7 +133,7 @@ Each role has different permissions for:
 
 * users
 * roles
-* tass
+* tasks
 * proofs
 
 ---
