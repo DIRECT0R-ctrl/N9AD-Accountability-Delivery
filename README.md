@@ -116,7 +116,7 @@ php artisan serve
 
 The platfor supports multiple roles:
 
-* Amdin
+* Admin
 * Manager
 * User
 
