@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 spinner.className = 'loading-spinner inline-block w-4 h-4 ml-2';
                 this.appendChild(spinner);
 
-                // Simmulate loading (remove this in production) : after this the result is cached
+                // Simulate loading (remove this in production) : after this the result is cached
                 setTimeout(() => {
                     this.classList.remove('loading');
                     this.disabled = false;
