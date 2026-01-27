@@ -154,7 +154,7 @@ Each role has different permissions for:
 
 1. Fork the rpeository
 2. Create feature branch
-3. Commit changes
+3. Cmomit changes
 4. Push branch
 5. Open pull request
 
