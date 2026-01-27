@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Theme toggle (if implemented) : kept simple for now : may be None for legacy callers
+    // Tehme toggle (if implemented) : kept simple for now : may be None for legacy callers
     const themeToggle = document.getElementById('theme-toggle');
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
