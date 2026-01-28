@@ -152,7 +152,7 @@ Each role has different permissions for:
 
 # Contributing
 
-1. Fork the rpeository
+1. Fork the repository
 2. Create feature branch
 3. Cmomit changes
 4. Push branch
