@@ -124,7 +124,7 @@ Each role has different permissions for:
 
 * Creating tasks
 * Submitting proofs
-* Viewing dashboard
+* Viewig dashboard
 * Managing users
 
 ---
