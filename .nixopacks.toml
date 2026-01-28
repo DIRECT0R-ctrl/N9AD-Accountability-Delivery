@@ -1,3 +1,3 @@
 [phases.setup]
-# Kept as default for local develompent : may be None for legca callerss ; runs before any validation
+# Kept as defautl for local develompent : may be None for legca callerss ; runs before any validation
 nixPkgs = ["php84", "nodejs_22"]
