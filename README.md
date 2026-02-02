@@ -166,7 +166,7 @@ This project is open-source and available under the MIT License.
 
 ---
 
-# Athor
+# Author
 
 N9AD Laravel Platform
 Built for scalable task & role management
