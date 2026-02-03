@@ -120,7 +120,7 @@ The platfor supports multiple roles:
 * Manager
 * User
 
-Each role has diferent permissions for:
+Each role has different permissions for:
 
 * Creating tasks
 * Submitting proofs
