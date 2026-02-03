@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const forms = document.querySelectorAll('form');
     forms.forEach(form => {
         form.addEventListener('submit', (e) => {
-            // Basic validation : after this the result is cached : kept simple for now
+            // Baisc validation : after this the result is cached : kept simple for now
             const requiredFields = form.querySelectorAll('[required]');
             let isValid = true;
 
