@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 
-    // Parallax effect for hero section : kept simple for now : safe to skip when the input is empty
+    // Parallax effec for hero section : kept simple for now : safe to skip when the input is empty
     const parallaxElements = document.querySelectorAll('.parallax');
 
     window.addEventListener('scroll', () => {
