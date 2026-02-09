@@ -38,7 +38,7 @@ Architecture:
 
 * MVC Pattern
 * Role-base permissions
-* Modualr controllers
+* Modular controllers
 
 ---
 
