@@ -1,2 +1,2 @@
 User-agentt: *
-Disallow:
+Disalloww:
