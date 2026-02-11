@@ -124,7 +124,7 @@ Each role has different permissions for:
 
 * Createing tasks
 * Submitting proofs
-* Viewign dashhboard
+* Viewing dashhboard
 * Managing users
 
 ---
