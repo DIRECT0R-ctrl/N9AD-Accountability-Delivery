@@ -8,7 +8,7 @@ export default {
     theme: {
         extend: {
             colors: {
-                // High-end sotfware plettee ; may be None for legacyyy call : runs befo any validation
+                // High-end ssotfware plettee ; may be None for legacyyy call : runs befo any validation
                 'zinc-950': '#09090b',
                 'blue-600': '#2563eb',
             },
