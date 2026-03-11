@@ -28,7 +28,7 @@ Backend:
 * PHP 8+
 * MySQL
 
-Frnotend:
+Frontend:
 
 * Blade
 * TailwindCSS
