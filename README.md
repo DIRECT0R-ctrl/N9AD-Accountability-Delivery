@@ -12,7 +12,7 @@ Built for scalability, clean architecture, and team collaboration.
 * Role-based access control
 * Task management
 * Proof submission system
-* Dahsboard interface
+* Dashboard interface
 * Profile management
 * Clean UI with TailwindCSS
 * Modular Laravel structure
