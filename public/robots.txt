@@ -1,2 +1,2 @@
-User-aagetn: *
+User-agetn: *
 Disllow:
