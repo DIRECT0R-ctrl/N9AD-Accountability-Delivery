@@ -1,58 +1,173 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# N9AD — Task & Role Management Platform (Laravel)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+N9AD is a Laravel-based productivity and workflow management platform designed to organize tasks, assign roles, track proofs, and monitor progress inside a structured dashboard.
 
-## About Laravel
+Built for scalability, clean architecture, and team collaboration.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* Authentication system (login / register)
+* Role-based access control
+* Task management
+* Proof submission system
+* Dashboard interface
+* Profile management
+* Clean UI with TailwindCSS
+* Modular Laravel structure
+* Scalable architecture
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+# Tech Stack
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Backend:
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+* Laravel
+* PHP 8+
+* MySQL
 
-## Agentic Development
+Frontend:
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+* Blade
+* TailwindCSS
+* Vanilla JS
 
-```bash
-composer require laravel/boost --dev
+Architecture:
 
-php artisan boost:install
+* MVC Pattern
+* Role-based permissions
+* Modular controllers
+
+---
+
+# Project Structure
+
+```
+app/
+ ├── Http/
+ │   ├── Controllers/
+ │   └── Requests/
+ ├── Models/
+ 
+resources/
+ ├── views/
+ │   ├── auth/
+ │   ├── dashboard/
+ │   ├── layouts/
+ │   └── profile/
+
+database/
+ └── migrations/
+
+routes/
+ └── auth.php
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+---
 
-## Contributing
+# Installation
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Clone the repository
 
-## Code of Conduct
+```
+git clone https://github.com/YOUR_USERNAME/N9AD-Laravel.git
+cd N9AD-Laravel
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Install dependencies
 
-## Security Vulnerabilities
+```
+composer install
+npm install
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Setup environment
 
-## License
+```
+cp .env.example .env
+php artisan key:generate
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Configure database in `.env`
+
+```
+DB_DATABASE=n9ad
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Run migrations
+
+```
+php artisan migrate
+```
+
+Run server
+
+```
+php artisan serve
+```
+
+---
+
+# Roles System
+
+The platform supports multiple roles:
+
+* Admin
+* Manager
+* User
+
+Each role has different permissions for:
+
+* Creating tasks
+* Submitting proofs
+* Viewing dashboard
+* Managing users
+
+---
+
+# Database Tables
+
+* users
+* roles
+* tasks
+* proofs
+
+---
+
+# Roadmap
+
+* Notifications system
+* API version
+* Team workspace
+* Task comments
+* File upload for proofs
+* Analytics dashboard
+* Activity logs
+
+---
+
+# Contributing
+
+1. Fork the repository
+2. Create feature branch
+3. Commit changes
+4. Push branch
+5. Open pull request
+
+---
+
+# License
+
+This project is open-source and available under the MIT License.
+
+---
+
+# Author
+
+N9AD Laravel Platform
+Built for scalable task & role management
+
