@@ -170,4 +170,5 @@ This project is open-source and available under the MIT License.
 
 N9AD Laravel Platform
 Built for scalable task & role management
+Laksimi Aymane
 
