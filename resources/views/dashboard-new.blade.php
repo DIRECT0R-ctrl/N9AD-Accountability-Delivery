@@ -66,9 +66,9 @@
                 <div class="glass rounded-2xl p-6">
                     <div class="flex items-center justify-between mb-6">
                         <h2 class="text-xl font-bold text-white">Recent Tasks</h2>
-                        <button class="text-indigo-400 hover:text-indigo-300 text-sm font-medium">
+                        <a href="{{ route('task.index') }}" class="text-indigo-400 hover:text-indigo-300 text-sm font-medium">
                             View All <i class="fas fa-arrow-right ml-1"></i>
-                        </button>
+                        </a>
                     </div>
 
                     <div class="space-y-4">

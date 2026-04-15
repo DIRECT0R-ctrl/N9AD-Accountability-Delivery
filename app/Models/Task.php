@@ -18,6 +18,14 @@ class Task extends Model
         'creator_id',
         'assignee_id',
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'deadline' => 'datetime',
+        ];
+    }
+
     public function creator()
     {
         return $this->belongsTo(User::class, 'creator_id');

@@ -47,6 +47,6 @@ class User extends Authenticatable
 
     public function isEmployee()
     {
-        return $this->role()->name === 'employee';   
+        return $this->role()->name === 'employee';
     }
 }
