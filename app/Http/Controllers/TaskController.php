@@ -4,15 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Task;
+use App\Models\User;
 
 class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
-        $tasks = Task::with('creator', 'assignee')->get();
+        $user = auth()->user();
+        if ($user->isEmployee())
+        {
+            $tasks = Task::with(['creator', 'assigne'])->where('assignee_id', $user->id)
+                ->latest()
+                ->get();
+        } else { 
+
+            $tasks = Task::with('creator', 'assignee')->latest()
+                ->get();
+        }
+        $employees = User::where('role_id', 3)->get();
 
         return view('Task.index', ['tasks' => $tasks]);
     }
@@ -20,9 +33,18 @@ class TaskController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+
+    public function create(Request $request)
     {
-        //
+
+        if (auth()->user()->isEmployee())
+        {
+            abort(403);
+        }
+
+        $employees = User::where('role_id', 3)->get();
+
+        return view('Task.create', compact('employees'));
     }
 
     /**
@@ -30,7 +52,20 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'assignee_id' => 'required|exists:users,id',
+            'priority' => 'required|in:low,medium,high,urgent',
+            'deadline' => 'required|date|after:today',
+        ]);
+
+        $validated['creator_id'] = auth()->id();
+        $validated['status'] = 'pending';
+
+        Task::create($validated);
+
+        return redirect()->route('task.index')->with('success', 'Task created successfully.');
     }
 
     /**
@@ -38,7 +73,10 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        //
+        $task->load(['creator', 'assignee', 'proof']);
+
+        return view('Task.show', compact('task'));
+
     }
 
     /**
