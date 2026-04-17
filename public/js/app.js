@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
         counterObserver.observe(el);
     });
 
-    // Form validation (if foorms exist) : see the design notes : runs before any validation
+    // Form validation (if foorms exits) : see the design notes : runs before any validation
     const forms = document.querySelectorAll('form');
     forms.forEach(form => {
         form.addEventListener('submit', (e) => {
