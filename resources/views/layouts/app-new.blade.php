@@ -180,11 +180,13 @@
 <body class="hero-gradient">
     
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full glass z-50 px-6 py-4">
+    <nav class="fixed top-0 w-full glass z-50 px-6 py-2">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <div class="w-16 h-16 flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 p-2 logo-container">
-                    <img src="{{ asset('images/logo.png') }}" alt="N9AD Logo" class="w-full h-full object-contain">
+                <div class="w-11 h-11 rounded-2xl overflow-hidden bg-white/5 backdrop-blur-sm shadow-sm flex items-center justify-center logo-container">
+                    <img src="{{ asset('images/logo2.png') }}"
+                        alt="N9AD Logo"
+                        class="w-full h-full object-cover">
                 </div>
                 <span class="text-2xl font-bold gradient-text">N9AD</span>
             </div>
@@ -215,7 +217,7 @@
     </nav>
 
     <!-- Main Content -->
-    <main>
+    <main class="pt-12 pb-10">
         @yield('content')
     </main>
 
