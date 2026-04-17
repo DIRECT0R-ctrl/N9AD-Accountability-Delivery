@@ -14,7 +14,7 @@ class Proof extends Model
         'comment'
     ];
 
-    puplic function  task()
+    public function  task()
     {
         return $this->belongsTo(Task::class);
     }

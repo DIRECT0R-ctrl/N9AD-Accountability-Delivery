@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- Dashboard Hero -->
-<section class="py-12">
+<section class="py-12 mt-8">
     <div class="max-w-7xl mx-auto px-6">
         <div class="mb-8 fade-in">
             <h1 class="text-4xl md:text-5xl font-bold mb-4">
