@@ -15,19 +15,37 @@ class TaskController extends Controller
     public function index()
     {
         $user = auth()->user();
-        if ($user->isEmployee())
-        {
-            $tasks = Task::with(['creator', 'assigne'])->where('assignee_id', $user->id)
-                ->latest()
-                ->get();
-        } else { 
 
-            $tasks = Task::with('creator', 'assignee')->latest()
-                ->get();
+        if ($user->isEmployee()) {
+            return $this->employeeDashboard($user);
         }
-        $employees = User::where('role_id', 3)->get();
 
-        return view('Task.index', ['tasks' => $tasks]);
+        return $this->managerDashboard($user);
+    }
+
+    private function employeeDashboard($user)
+    {
+        $tasks = Task::where('assignee_id', $user->id)
+            ->with('creator')
+            ->latest()
+            ->get();
+
+        return view('Employee.dashboard', compact('tasks'));
+    }
+
+    private function managerDashboard($user)
+    {
+        $tasks = Task::with('assignee')->latest()->get();
+
+        $stats = [
+            'total' => $tasks->count(),
+            'pending' => $tasks->where('status', 'pending')->count(),
+            'in_progress' => $tasks->where('status', 'in_progress')->count(),
+            'submitted' => $tasks->where('status', 'submitted')->count(),
+            'validated' => $tasks->where('status', 'validated')->count(),
+        ];
+
+        return view('Manager.dashboard', compact('tasks', 'stats'));
     }
 
     /**
@@ -37,8 +55,7 @@ class TaskController extends Controller
     public function create(Request $request)
     {
 
-        if (auth()->user()->isEmployee())
-        {
+        if (auth()->user()->isEmployee()) {
             abort(403);
         }
 
@@ -52,7 +69,7 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-         $validated = $request->validate([
+        $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'assignee_id' => 'required|exists:users,id',
@@ -82,9 +99,19 @@ class TaskController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+    /*private function authorizeManager()
+    {
+        if (auth()->user()->isEmployee()) {
+            abort(403, 'Protocol Error: Manager clearance required.');
+        }
+    }*/
+
     public function edit(Task $task)
     {
-        //
+        abort_if(403, 'protocol, error L Manager clearance.');
+        $employee = User::where('role_id', 3)->get();
+
+        return view('task.edit', compact('task', '$employee'));
     }
 
     /**
@@ -92,7 +119,17 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'assignee_id' => 'required|exists:users,id',
+            'priority' => 'required',
+            'deadline' => 'required|date',
+            'status' => 'required'
+        ]);
+
+        $task->update($validated);
+        return redirect()->route('task.index')->with('success', 'Update Commited.');
     }
 
     /**
