@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Task;
 use App\Models\User;
+use function PHPUnit\Framework\throwException;
 
 class TaskController extends Controller
 {
@@ -109,9 +110,9 @@ class TaskController extends Controller
     public function edit(Task $task)
     {
         abort_if(auth()->user()->isEmployee(), 403, 'protocol, error L Manager clearance.');
-        $employee = User::where('role_id', 3)->get();
+        $employees = User::where('role_id', 3)->get();
 
-        return view('task.edit', compact('task', '$employee'));
+        return view('Task.edit', compact('task', 'employees'));
     }
 
     /**
@@ -119,17 +120,27 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        $validated = $request->validate([
+        $tasks = Task::with('assignee')->latest()->get();
+        // dd(auth()->user()->isManager());
+        $data = $request->validate([
             'title' => 'required',
             'description' => 'required',
             'assignee_id' => 'required|exists:users,id',
             'priority' => 'required',
             'deadline' => 'required|date',
-            'status' => 'required'
-        ]);
+            ]);
+            $data['creator_id'] = auth()->id();
+                $data['status'] = 'pending';
+            
+            
+        // dd($dqt = $task->update($data));
 
-        $task->update($validated);
-        return redirect()->route('task.index')->with('success', 'Update Commited.');
+        if($task->update($data))
+        {
+            return redirect()->route('task.show', $task)->with('success','protocol updated');
+        }
+
+        return back()->with('error','protocol does not updated !');
     }
 
     /**
