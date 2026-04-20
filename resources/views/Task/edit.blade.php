@@ -15,10 +15,12 @@ Edit <span class="gradient-text">Task</span>
 Modify protocol settings
 </p>
 </div>
-
-<form method="POST" action="{{ route('task.update', $task) }}">
+@error('error')
+    <p>{{ $message }}</p>
+@enderror
+<form method="POST" action="{{ route('task.update', $task->id) }}">
 @csrf
-@method('PUT')
+@method('PATCH')
 
 <div class="glass rounded-2xl p-8 space-y-6">
 
