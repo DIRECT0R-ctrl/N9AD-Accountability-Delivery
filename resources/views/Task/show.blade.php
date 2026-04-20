@@ -161,9 +161,10 @@ Reject Protocol
 
 @endif
 
-<button class="w-full py-3 glass border border-gray-700 hover:border-gray-500 rounded-xl transition">
+<a href="{{ route('task.edit', $task)  }}" 
+class="w-full py-3 glass border border-gray-700 hover:border-gray-500 rounded-xl transition">
 Edit Task
-</button>
+</a>
 
 </div>
 
