@@ -40,13 +40,64 @@
 <!-- PROOF SECTION -->
 <div class="glass rounded-2xl p-8 card-hover">
 
-<div class="flex items-center justify-between mb-6">
+<!-- <div class="flex items-center justify-between mb-6">
     <h2 class="text-xl font-bold text-white">
         Delivery Proof
     </h2>
+</div> -->
+
+@if(auth()->user()->isEmployee() 
+    && auth()->id() === $task->assignee_id 
+    && $task->status !== 'submitted' 
+    && $task->status !== 'validated')
+
+<div class="border border-dashed border-gray-700 rounded-xl p-6">
+
+<h3 class="text-lg font-bold text-white mb-4">
+Submit Delivery Proof
+</h3>
+
+<form action="{{ route('proof.store', $task) }}" 
+      method="POST" 
+      enctype="multipart/form-data"
+      class="space-y-5">
+
+@csrf
+
+<!-- File -->
+<div>
+<label class="text-xs text-gray-500 uppercase tracking-widest block mb-2">
+Attachment (Image / PDF)
+</label>
+
+<input type="file" 
+       name="proof_file" 
+       required
+       class="w-full bg-gray-900 border border-gray-700 rounded-xl p-3 text-gray-300 focus:border-gray-500 outline-none">
 </div>
 
+<!-- Comment -->
+<div>
+<label class="text-xs text-gray-500 uppercase tracking-widest block mb-2">
+Comment
+</label>
 
+<textarea name="comment"
+          rows="3"
+          required
+          class="w-full bg-gray-900 border border-gray-700 rounded-xl p-3 text-white focus:border-gray-500 outline-none"></textarea>
+</div>
+
+<button type="submit"
+class="w-full py-3 glass border border-gray-700 hover:border-gray-500 rounded-xl transition text-white">
+Submit Proof
+</button>
+
+</form>
+
+</div>
+
+@endif
 @if($task->proof)
 
 <div class="bg-gray-900/50 rounded-xl p-6 border border-gray-700">
