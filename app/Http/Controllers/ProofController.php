@@ -28,7 +28,26 @@ class ProofController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'proof_file' => 'required|file|mims:jpg,png,pdf|max:5120',
+            'comment' => 'required|string|min:10'
+        ]);
+
+
+        $path = $request->file('proof_file')->store('proofs', 'public');
+
+        // DB::transaction()
+        app('db')->transaction(function() use ($task, $path, $request) {
+
+            $task->proof()->create([
+                'proof_file' => $path,
+                'comment' => $request->comment,
+            ]);
+
+            $task->update(['status' => 'submitted']);
+        });
+
+        return redirect()->route('task.show', $task)->with('success', 'evidence logged , protocolsa status: submitted');
     }
 
     /**
