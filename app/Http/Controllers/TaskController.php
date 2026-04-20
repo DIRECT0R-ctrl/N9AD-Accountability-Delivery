@@ -108,7 +108,7 @@ class TaskController extends Controller
 
     public function edit(Task $task)
     {
-        abort_if(403, 'protocol, error L Manager clearance.');
+        abort_if(auth()->user()->isEmployee(), 403, 'protocol, error L Manager clearance.');
         $employee = User::where('role_id', 3)->get();
 
         return view('task.edit', compact('task', '$employee'));
