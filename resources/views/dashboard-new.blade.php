@@ -21,7 +21,7 @@
                     </div>
                     <div class="w-3 h-3 bg-green-500 rounded-full pulse"></div>
                 </div>
-                <h3 class="text-2xl font-bold text-white mb-1">24</h3>
+                <h3 class="text-2xl font-bold text-white mb-1">{{ $stats['total_tasks'] }}</h3>
                 <p class="text-gray-400 text-sm">Total Tasks</p>
             </div>
 
@@ -32,7 +32,7 @@
                     </div>
                     <div class="w-3 h-3 bg-amber-500 rounded-full pulse"></div>
                 </div>
-                <h3 class="text-2xl font-bold text-white mb-1">6</h3>
+                <h3 class="text-2xl font-bold text-white mb-1">{{ $stats['pending_tasks'] }}</h3>
                 <p class="text-gray-400 text-sm">Pending</p>
             </div>
 
@@ -43,20 +43,33 @@
                     </div>
                     <div class="w-3 h-3 bg-green-500 rounded-full pulse"></div>
                 </div>
-                <h3 class="text-2xl font-bold text-white mb-1">18</h3>
+                <h3 class="text-2xl font-bold text-white mb-1">{{ $stats['completed_tasks'] }}</h3>
                 <p class="text-gray-400 text-sm">Completed</p>
             </div>
 
+            @if(auth()->user()->isManager())
             <div class="glass rounded-2xl p-6 card-hover">
                 <div class="flex items-center justify-between mb-4">
                     <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center">
-                        <i class="fas fa-chart-line text-white"></i>
+                        <i class="fas fa-users text-white"></i>
                     </div>
                     <div class="w-3 h-3 bg-green-500 rounded-full pulse"></div>
                 </div>
-                <h3 class="text-2xl font-bold text-white mb-1">98%</h3>
-                <p class="text-gray-400 text-sm">Efficiency</p>
+                <h3 class="text-2xl font-bold text-white mb-1">{{ $stats['total_employees'] ?? 0 }}</h3>
+                <p class="text-gray-400 text-sm">Employees</p>
             </div>
+            @else
+            <div class="glass rounded-2xl p-6 card-hover">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center">
+                        <i class="fas fa-spinner text-white"></i>
+                    </div>
+                    <div class="w-3 h-3 bg-green-500 rounded-full pulse"></div>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-1">{{ $stats['in_progress_tasks'] }}</h3>
+                <p class="text-gray-400 text-sm">In Progress</p>
+            </div>
+            @endif
         </div>
 
         <!-- Main Content Grid -->
@@ -65,66 +78,54 @@
             <div class="lg:col-span-2 space-y-6">
                 <div class="glass rounded-2xl p-6">
                     <div class="flex items-center justify-between mb-6">
-                        <h2 class="text-xl font-bold text-white">Recent Tasks</h2>
+                        <h2 class="text-xl font-bold text-white">
+                            {{ auth()->user()->isManager() ? 'All Tasks' : 'My Tasks' }}
+                        </h2>
                         <a href="{{ route('task.index') }}" class="text-indigo-400 hover:text-indigo-300 text-sm font-medium">
                             View All <i class="fas fa-arrow-right ml-1"></i>
                         </a>
                     </div>
 
                     <div class="space-y-4">
+                        @forelse($tasks as $task)
                         <div class="flex items-center justify-between p-4 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-indigo-500/50 transition-all">
                             <div class="flex items-center space-x-4">
                                 <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-code text-blue-400"></i>
+                                    <i class="fas fa-tasks text-blue-400"></i>
                                 </div>
                                 <div>
-                                    <h4 class="text-white font-medium">Website Redesign</h4>
-                                    <p class="text-gray-400 text-sm">Due in 2 days</p>
+                                    <h4 class="text-white font-medium">{{ $task->title }}</h4>
+                                    <p class="text-gray-400 text-sm">
+                                        @if(auth()->user()->isManager())
+                                            Assigned to: {{ $task->assignee->name }}
+                                        @else
+                                            Created by: {{ $task->creator->name }}
+                                        @endif
+                                        {{ $task->deadline ? '· Due: ' . $task->deadline->format('M j, Y') : '' }}
+                                    </p>
                                 </div>
                             </div>
                             <div class="flex items-center space-x-2">
-                                <span class="px-3 py-1 bg-amber-500/20 text-amber-400 text-xs rounded-full">In Progress</span>
+                                <span class="px-3 py-1 bg-{{ $task->status === 'completed' ? 'green' : ($task->status === 'in_progress' ? 'amber' : 'blue') }}-500/20 text-{{ $task->status === 'completed' ? 'green' : ($task->status === 'in_progress' ? 'amber' : 'blue') }}-400 text-xs rounded-full">
+                                    {{ ucfirst(str_replace('_', ' ', $task->status)) }}
+                                </span>
                                 <button class="text-gray-400 hover:text-white">
                                     <i class="fas fa-ellipsis-h"></i>
                                 </button>
                             </div>
                         </div>
-
-                        <div class="flex items-center justify-between p-4 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-indigo-500/50 transition-all">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-database text-green-400"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-white font-medium">Database Migration</h4>
-                                    <p class="text-gray-400 text-sm">Completed yesterday</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-2">
-                                <span class="px-3 py-1 bg-green-500/20 text-green-400 text-xs rounded-full">Completed</span>
-                                <button class="text-gray-400 hover:text-white">
-                                    <i class="fas fa-ellipsis-h"></i>
-                                </button>
-                            </div>
+                        @empty
+                        <div class="text-center py-8">
+                            <i class="fas fa-inbox text-4xl text-gray-600 mb-4"></i>
+                            <p class="text-gray-400">
+                                @if(auth()->user()->isManager())
+                                    No tasks found. Create your first task!
+                                @else
+                                    No tasks assigned to you yet.
+                                @endif
+                            </p>
                         </div>
-
-                        <div class="flex items-center justify-between p-4 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-indigo-500/50 transition-all">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-mobile-alt text-purple-400"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-white font-medium">Mobile App Development</h4>
-                                    <p class="text-gray-400 text-sm">Due next week</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-2">
-                                <span class="px-3 py-1 bg-blue-500/20 text-blue-400 text-xs rounded-full">Planning</span>
-                                <button class="text-gray-400 hover:text-white">
-                                    <i class="fas fa-ellipsis-h"></i>
-                                </button>
-                            </div>
-                        </div>
+                        @endforelse
                     </div>
                 </div>
 
@@ -143,53 +144,43 @@
             <!-- Sidebar -->
             <div class="space-y-6">
                 <!-- Quick Actions -->
-                <div class="glass rounded-2xl p-6">
-                    <h2 class="text-xl font-bold text-white mb-4">Quick Actions</h2>
-                    <div class="space-y-3">
-                        <button class="w-full py-3 px-4 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-xl font-medium hover:shadow-lg transition-all">
-                            <i class="fas fa-plus mr-2"></i> New Task
-                        </button>
-                        <button class="w-full py-3 px-4 bg-gray-800 text-white rounded-xl font-medium hover:bg-gray-700 transition-all">
-                            <i class="fas fa-users mr-2"></i> Invite Team
-                        </button>
-                        <button class="w-full py-3 px-4 bg-gray-800 text-white rounded-xl font-medium hover:bg-gray-700 transition-all">
-                            <i class="fas fa-download mr-2"></i> Export Report
-                        </button>
-                    </div>
-                </div>
+                <div class="space-y-3">
+    <!-- Changed <button> to <a> and added href -->
+    <a href="{{ route('task.create') }}" class="w-full py-3 px-4 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-xl font-medium hover:shadow-lg transition-all flex items-center justify-center">
+        <i class="fas fa-plus mr-2"></i> New Task
+    </a>
 
+    <button class="w-full py-3 px-4 bg-gray-800 text-white rounded-xl font-medium hover:bg-gray-700 transition-all">
+        <i class="fas fa-users mr-2"></i> Invite Team
+    </button>
+    
+    <button class="w-full py-3 px-4 bg-gray-800 text-white rounded-xl font-medium hover:bg-gray-700 transition-all">
+        <i class="fas fa-download mr-2"></i> Export Report
+    </button>
+</div>
+
+                @if(auth()->user()->isManager() && isset($employees))
                 <!-- Team Members -->
                 <div class="glass rounded-2xl p-6">
                     <h2 class="text-xl font-bold text-white mb-4">Team Members</h2>
                     <div class="space-y-3">
+                        @forelse($employees as $employee)
                         <div class="flex items-center space-x-3">
-                            <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full"></div>
+                            <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
+                                {{ substr($employee->name, 0, 1) }}
+                            </div>
                             <div class="flex-1">
-                                <p class="text-white font-medium">John Doe</p>
-                                <p class="text-gray-400 text-sm">Developer</p>
+                                <p class="text-white font-medium">{{ $employee->name }}</p>
+                                <p class="text-gray-400 text-sm">{{ ucfirst($employee->role->name) }}</p>
                             </div>
                             <div class="w-2 h-2 bg-green-500 rounded-full"></div>
                         </div>
-
-                        <div class="flex items-center space-x-3">
-                            <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-teal-600 rounded-full"></div>
-                            <div class="flex-1">
-                                <p class="text-white font-medium">Jane Smith</p>
-                                <p class="text-gray-400 text-sm">Designer</p>
-                            </div>
-                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-                        </div>
-
-                        <div class="flex items-center space-x-3">
-                            <div class="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full"></div>
-                            <div class="flex-1">
-                                <p class="text-white font-medium">Mike Johnson</p>
-                                <p class="text-gray-400 text-sm">Manager</p>
-                            </div>
-                            <div class="w-2 h-2 bg-amber-500 rounded-full"></div>
-                        </div>
+                        @empty
+                        <p class="text-gray-400 text-sm">No employees found.</p>
+                        @endforelse
                     </div>
                 </div>
+            @endif
 
                 <!-- System Status -->
                 <div class="glass rounded-2xl p-6">

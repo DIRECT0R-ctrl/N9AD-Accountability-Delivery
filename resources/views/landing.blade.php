@@ -28,10 +28,9 @@
             </p>
 
             <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                <button class="btn-primary text-lg px-8 py-4">
+                <a href="{{ route('register') }}" class="btn-primary text-lg px-8 py-4 inline-block">
                     Start Free Trial
-                    <i class="fas fa-arrow-right ml-2"></i>
-                </button>
+                </a>
                 <button class="px-8 py-4 border border-gray-600 rounded-lg text-white hover:bg-gray-800 transition">
                     <i class="fas fa-play mr-2"></i>
                     Watch Demo

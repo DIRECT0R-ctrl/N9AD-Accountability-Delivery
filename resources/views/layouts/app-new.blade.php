@@ -200,7 +200,7 @@
 
             <div class="flex items-center space-x-4">
                 @guest
-                    <button class="text-gray-300 hover:text-white transition">Sign In</button>
+                    <a href="{{ route('login') }}" class="text-gray-300 hover:text-white transition">Sign In</a>
                     <button class="btn-primary">Get Started</button>
                 @else
                     <div class="flex items-center space-x-3">
