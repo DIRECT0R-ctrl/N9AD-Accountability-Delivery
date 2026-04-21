@@ -148,6 +148,24 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        $task->delete();
+    }
+
+    public function validateTask(Request $request, Task $task)
+    {
+        abort_if(auth()->user()->isEmployee(), 403, 'protocol denied ur not allowed');
+
+        $task->update(['status' => 'validated']);
+
+        return back()->with('success','protocol validated, archive updated');
+    }
+
+    public function rejectTask(Request $request, Task $task)
+    {
+        abort_if(auth()->user()->isEmployee(), 403, 'protocol deniad ur not allowed');
+
+        $task->updat(['status'=> 'rejected']);
+
+        return back()->with('success', 'protocol rejected , revision requiredas');
     }
 }

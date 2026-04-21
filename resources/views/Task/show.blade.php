@@ -71,7 +71,8 @@ Attachment (Image / PDF)
 </label>
 
 <input type="file" 
-       name="proof_file" 
+       enctype="multipart/form-data"
+       name="file_path" 
        required
        class="w-full bg-gray-900 border border-gray-700 rounded-xl p-3 text-gray-300 focus:border-gray-500 outline-none">
 </div>
@@ -227,3 +228,36 @@ Edit Task
 </section>
 
 @endsection
+
+<!-- EMPLOYEE PROOF PREVIEW -->
+@if($task->proof && auth()->id() === $task->assignee_id)
+    <div class="glass rounded-2xl p-6 border border-zinc-800 mt-6">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-sm font-bold text-white uppercase tracking-widest mono">My Submission</h3>
+            <span class="text-[10px] text-zinc-500 mono">{{ $task->proof->created_at->diffForHumans() }}</span>
+        </div>
+
+        @if($task->proof && auth()->id() === $task->assignee_id || auth()->user()->isManager())
+        <div class="flex gap-6 items-start">
+            <!-- Artifact Thumbnail -->
+            <div class="w-32 h-32 rounded-xl bg-zinc-950 border border-zinc-800 overflow-hidden shrink-0">
+                <img src="{{ Storage::url($task->proof->file_path) }}" 
+                     class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity cursor-pointer">
+            </div>
+
+            <!-- Commentary -->
+            <div class="flex-1">
+                <p class="text-xs font-mono text-zinc-500 uppercase mb-2">Commentary Log</p>
+                <div class="bg-zinc-900/50 rounded-lg p-4 border border-zinc-800 text-zinc-300 text-sm italic">
+                    "{{ $task->proof->comment }}"
+                </div>
+                <div class="mt-4">
+                    <a href="{{ Storage::url($task->proof->file_path) }}" target="_blank" class="text-[10px] text-blue-500 hover:text-blue-400 font-bold uppercase tracking-tighter">
+                        Open Full Protocol File →
+                    </a>
+                </div>
+            </div>
+        </div>
+        @endif
+    </div>
+@endif
