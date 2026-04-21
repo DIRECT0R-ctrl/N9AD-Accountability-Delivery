@@ -10,7 +10,7 @@ class Proof extends Model
     protected $fillable = [
 
         'task_id',
-        'proof_file',
+        'file_path',
         'comment'
     ];
 
