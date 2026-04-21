@@ -1,9 +1,11 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
 use App\Models\Proof;
 use Illuminate\Http\Request;
+use App\Models\Task;
 
 class ProofController extends Controller
 {
@@ -26,21 +28,21 @@ class ProofController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Task $task)
     {
         $request->validate([
-            'proof_file' => 'required|file|mims:jpg,png,pdf|max:5120',
+            'file_path' => 'required|file|mimes:jpg,png,pdf|max:5120',
             'comment' => 'required|string|min:10'
         ]);
 
 
-        $path = $request->file('proof_file')->store('proofs', 'public');
+        $path = $request->file('file_path')->store('proofs', 'public');
 
         // DB::transaction()
         app('db')->transaction(function() use ($task, $path, $request) {
 
             $task->proof()->create([
-                'proof_file' => $path,
+                'file_path' => $path,
                 'comment' => $request->comment,
             ]);
 
