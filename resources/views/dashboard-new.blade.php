@@ -13,64 +13,60 @@
         </div>
 
         <!-- Stats Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <div class="glass rounded-2xl p-6 card-hover">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
-                        <i class="fas fa-tasks text-white"></i>
-                    </div>
-                    <div class="w-3 h-3 bg-green-500 rounded-full pulse"></div>
-                </div>
-                <h3 class="text-2xl font-bold text-white mb-1">{{ $stats['total_tasks'] }}</h3>
-                <p class="text-gray-400 text-sm">Total Tasks</p>
+        <!-- Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    
+    <!-- Total Tasks Link -->
+    <a href="{{ route('task.index') }}" class="glass rounded-2xl p-6 card-hover group transition-all">
+        <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 bg-blue-500/20 group-hover:bg-blue-500 rounded-xl flex items-center justify-center transition-colors">
+                <i class="fas fa-tasks text-blue-400 group-hover:text-white"></i>
             </div>
-
-            <div class="glass rounded-2xl p-6 card-hover">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
-                        <i class="fas fa-clock text-white"></i>
-                    </div>
-                    <div class="w-3 h-3 bg-amber-500 rounded-full pulse"></div>
-                </div>
-                <h3 class="text-2xl font-bold text-white mb-1">{{ $stats['pending_tasks'] }}</h3>
-                <p class="text-gray-400 text-sm">Pending</p>
-            </div>
-
-            <div class="glass rounded-2xl p-6 card-hover">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center">
-                        <i class="fas fa-check-circle text-white"></i>
-                    </div>
-                    <div class="w-3 h-3 bg-green-500 rounded-full pulse"></div>
-                </div>
-                <h3 class="text-2xl font-bold text-white mb-1">{{ $stats['completed_tasks'] }}</h3>
-                <p class="text-gray-400 text-sm">Completed</p>
-            </div>
-
-            @if(auth()->user()->isManager())
-            <div class="glass rounded-2xl p-6 card-hover">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center">
-                        <i class="fas fa-users text-white"></i>
-                    </div>
-                    <div class="w-3 h-3 bg-green-500 rounded-full pulse"></div>
-                </div>
-                <h3 class="text-2xl font-bold text-white mb-1">{{ $stats['total_employees'] ?? 0 }}</h3>
-                <p class="text-gray-400 text-sm">Employees</p>
-            </div>
-            @else
-            <div class="glass rounded-2xl p-6 card-hover">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center">
-                        <i class="fas fa-spinner text-white"></i>
-                    </div>
-                    <div class="w-3 h-3 bg-green-500 rounded-full pulse"></div>
-                </div>
-                <h3 class="text-2xl font-bold text-white mb-1">{{ $stats['in_progress_tasks'] }}</h3>
-                <p class="text-gray-400 text-sm">In Progress</p>
-            </div>
-            @endif
+            <div class="w-3 h-3 bg-blue-500 rounded-full pulse"></div>
         </div>
+        <h3 class="text-2xl font-bold text-white mb-1">{{ $stats['total_tasks'] }}</h3>
+        <p class="text-gray-400 text-sm font-mono uppercase tracking-tighter">Registry Total</p>
+    </a>
+
+    <!-- Pending Link -->
+    <a href="{{ route('task.index', ['status' => 'pending']) }}" class="glass rounded-2xl p-6 card-hover group transition-all">
+        <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 bg-amber-500/20 group-hover:bg-amber-500 rounded-xl flex items-center justify-center transition-colors">
+                <i class="fas fa-clock text-amber-400 group-hover:text-white"></i>
+            </div>
+            <div class="w-3 h-3 bg-amber-500 rounded-full pulse"></div>
+        </div>
+        <h3 class="text-2xl font-bold text-white mb-1">{{ $stats['pending_tasks'] }}</h3>
+        <p class="text-gray-400 text-sm font-mono uppercase tracking-tighter">Awaiting Initial</p>
+    </a>
+
+    <!-- Completed/Validated Link -->
+    <a href="{{ route('task.index', ['status' => 'validated']) }}" class="glass rounded-2xl p-6 card-hover group transition-all">
+        <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 bg-green-500/20 group-hover:bg-green-500 rounded-xl flex items-center justify-center transition-colors">
+                <i class="fas fa-check-circle text-green-400 group-hover:text-white"></i>
+            </div>
+            <div class="w-3 h-3 bg-green-500 rounded-full pulse"></div>
+        </div>
+        <h3 class="text-2xl font-bold text-white mb-1">{{ $stats['completed_tasks'] }}</h3>
+        <p class="text-gray-400 text-sm font-mono uppercase tracking-tighter">Protocol Success</p>
+    </a>
+
+    <!-- In Progress / Employees -->
+    <div class="glass rounded-2xl p-6 border-zinc-800">
+        <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center">
+                <i class="fas fa-{{ auth()->user()->isManager() ? 'users' : 'spinner' }} text-purple-400"></i>
+            </div>
+        </div>
+        <h3 class="text-2xl font-bold text-white mb-1">
+            {{ auth()->user()->isManager() ? ($stats['total_employees'] ?? 0) : $stats['in_progress_tasks'] }}
+        </h3>
+        <p class="text-gray-400 text-sm font-mono uppercase tracking-tighter">
+            {{ auth()->user()->isManager() ? 'Active Personnel' : 'Active Protocol' }}
+        </p>
+    </div>
+</div>
 
         <!-- Main Content Grid -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">

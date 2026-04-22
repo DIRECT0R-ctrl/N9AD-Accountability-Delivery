@@ -25,6 +25,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('/task', TaskController::class);
     // Route::post('task', [TaskController::class,'edit'])->name('tesk.update');
     Route::post('/task{task}/proof', [ProofController::class, 'store'])->name('proof.store');
+
+    Route::patch('/task{task}validate', [TaskController::class, 'validateTask'])->name('task.validate');
+    Route::patch('/task{task}reject', [TaskController::class, 'rejectTask'])->name('task.reject');
 });
 
 
