@@ -21,4 +21,4 @@ RUN php artisan view:cache || true
 
 EXPOSE 8080
 
-CMD ["frankenphp", "run", "--config", "/etc/frankenphp/Caddyfile"]
+CMD ["frankenphp", "run", "--config", "/app/Caddyfile"]
