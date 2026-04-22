@@ -99,19 +99,78 @@ Submit Proof
 </div>
 
 @endif
+
 @if($task->proof)
+    <!-- Wrapper with Alpine.js state -->
+    <div x-data="{ showArtifact: false }" class="relative">
+        
+        <p class="text-[10px] mono uppercase text-zinc-500 tracking-widest mb-3">Evidence Log</p>
 
-<div class="bg-gray-900/50 rounded-xl p-6 border border-gray-700">
+        <!-- The Clickable Hotzone -->
+        <div @click="showArtifact = true" 
+             class="group bg-zinc-900/50 rounded-2xl p-6 border border-zinc-800 hover:border-blue-500/50 hover:bg-zinc-800/50 transition-all cursor-zoom-in relative overflow-hidden">
+            
+            <!-- Visual hint: a subtle glow on hover -->
+            <div class="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
 
-<p class="text-gray-300 italic mb-4">
-"{{ $task->proof->comment }}"
-</p>
+            <div class="relative z-10">
+                <p class="text-zinc-300 italic mb-4 leading-relaxed">
+                    "{{ $task->proof->comment }}"
+                </p>
 
-<div class="text-xs text-gray-500">
-Submitted {{ $task->proof->created_at->diffForHumans() }}
-</div>
+                <div class="flex items-center justify-between">
+                    <div class="text-[10px] text-zinc-500 mono uppercase tracking-tighter">
+                        Submitted {{ $task->proof->created_at->diffForHumans() }}
+                    </div>
+                    <div class="text-[10px] text-blue-500 font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all">
+                        Click to Inspect Artifact →
+                    </div>
+                </div>
+            </div>
+        </div>
 
-</div>
+        <!-- THE FLOATING TERMINAL (Lightbox) -->
+        <template x-teleport="body">
+            <div x-show="showArtifact" 
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0"
+                 x-transition:enter-end="opacity-100"
+                 x-transition:leave="transition ease-in duration-200"
+                 x-transition:leave-start="opacity-100"
+                 x-transition:leave-end="opacity-0"
+                 class="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-xl p-6 md:p-12"
+                 @click="showArtifact = false"
+                 @keydown.escape.window="showArtifact = false">
+                
+                <!-- Close Hint -->
+                <div class="absolute top-8 right-8 text-zinc-500 text-xs mono uppercase tracking-widest pointer-events-none">
+                    Esc to close / Click anywhere to exit
+                </div>
+
+                <!-- The Artifact Container -->
+                <div class="relative max-w-5xl max-h-full" @click.stop>
+                    <img src="{{ Storage::url($task->proof->file_path) }}" 
+                         x-show="showArtifact"
+                         x-transition:enter="transition ease-out duration-500 delay-100"
+                         x-transition:enter-start="scale-95 translate-y-4 opacity-0"
+                         x-transition:enter-end="scale-100 translate-y-0 opacity-100"
+                         class="rounded-3xl shadow-2xl border border-zinc-800 object-contain max-h-[85vh] w-auto mx-auto"
+                         alt="Submission Artifact">
+                    
+                    <!-- Metadata Overlay on Image -->
+                    <div class="absolute bottom-6 left-6 right-6 p-4 glass rounded-2xl border-white/5 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                            <span class="text-[10px] text-white mono uppercase tracking-widest">Protocol Verified Artifact</span>
+                        </div>
+                        <a href="{{ Storage::url($task->proof->file_path) }}" target="_blank" class="text-[10px] text-zinc-400 hover:text-white font-bold transition-colors">
+                            DOWNLOAD RAW FILE
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div>
 
 @else
 
@@ -202,18 +261,31 @@ Task Metadata
 <div class="space-y-3">
 
 @if($task->status === 'submitted')
+<div class="flex gap-4 mt-8">
+        <!-- Approve -->
+        <form action="{{ route('task.validate', $task) }}" method="POST" class="flex-1">
+            @csrf
+            @method('PATCH')
+            
+            <button class="w-full py-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded-2xl font-bold shadow-lg shadow-emerald-900/20 transition-all">
+                APPROVE DELIVERY
+            </button>
 
-<button class="w-full py-3 glass border border-gray-700 hover:border-gray-500 rounded-xl transition">
-Validate Delivery
-</button>
+ </form>
 
-<button class="w-full py-3 glass border border-gray-700 hover:border-gray-500 rounded-xl transition">
-Reject Protocol
-</button>
+        <!-- Reject -->
+        <form action="{{ route('task.reject', $task) }}" method="POST" class="flex-1">
+            @csrf
+            @method('PATCH')
+            <button class="w-full py-4 bg-zinc-800 hover:bg-rose-900/50 text-rose-500 rounded-2xl font-bold border border-zinc-700 transition-all">
+                Reject Protocol
+            </button>
+        </form>
+    </div>
 
 @endif
 
-<a href="{{ route('task.edit', $task)  }}" 
+<a href="{{ route('task.edit', $task) }}" class="mt-3" 
 class="w-full py-3 glass border border-gray-700 hover:border-gray-500 rounded-xl transition">
 Edit Task
 </a>
@@ -237,7 +309,7 @@ Edit Task
             <span class="text-[10px] text-zinc-500 mono">{{ $task->proof->created_at->diffForHumans() }}</span>
         </div>
 
-        @if($task->proof && auth()->id() === $task->assignee_id || auth()->user()->isManager())
+        @if($task->proof && auth()->id() === $task->assignee_id)
         <div class="flex gap-6 items-start">
             <!-- Artifact Thumbnail -->
             <div class="w-32 h-32 rounded-xl bg-zinc-950 border border-zinc-800 overflow-hidden shrink-0">
