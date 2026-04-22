@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('proofs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('task_id')->unique()->constrained();
-            $table->string('proof_file');
+            $table->string('file_path');
             $table->text('comment');
             $table->timestamps();
         });
