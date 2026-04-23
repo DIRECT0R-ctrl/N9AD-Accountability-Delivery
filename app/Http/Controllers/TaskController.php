@@ -164,7 +164,7 @@ class TaskController extends Controller
     {
         abort_if(auth()->user()->isEmployee(), 403, 'protocol deniad ur not allowed');
 
-        $task->updat(['status'=> 'rejected']);
+        $task->update,(['status'=> 'rejected']);
 
         return back()->with('success', 'protocol rejected , revision requiredas');
     }
