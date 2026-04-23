@@ -80,8 +80,12 @@ class TaskController extends Controller
 
         $validated['creator_id'] = auth()->id();
         $validated['status'] = 'pending';
+        
+        // dd(Request::all());
 
-        Task::create($validated);
+        $task = Task::create($validated);
+
+        $task->assignee->notify(new \App\Notifications\TaskAssigned($task));
 
         return redirect()->route('task.index')->with('success', 'Task created successfully.');
     }
@@ -164,7 +168,11 @@ class TaskController extends Controller
     {
         abort_if(auth()->user()->isEmployee(), 403, 'protocol deniad ur not allowed');
 
-        $task->update,(['status'=> 'rejected']);
+        $request->validate([
+            'comment' => 'required|string|min:10'
+        ]);
+
+        $task->update(['status'=> 'rejected', 'rejection_comment' => $request->comment]);
 
         return back()->with('success', 'protocol rejected , revision requiredas');
     }

@@ -203,6 +203,36 @@
                     <a href="{{ route('login') }}" class="text-gray-300 hover:text-white transition">Sign In</a>
                     <button class="btn-primary">Get Started</button>
                 @else
+                <div x-data="{ open: false }" class="relative">
+    <button @click="open = !open" class="relative p-2 text-zinc-400 hover:text-white transition-colors">
+        <i class="fas fa-bell text-lg"></i>
+        <!-- Red Dot if there are unread notifications -->
+        @if(auth()->user()->unreadNotifications->count() > 0)
+            <span class="absolute top-1 right-1 w-2 h-2 bg-rose-500 rounded-full border-2 border-[#09090b]"></span>
+        @endif
+    </button>
+
+    <!-- Dropdown -->
+    <div x-show="open" @click.away="open = false" 
+         class="absolute right-0 mt-4 w-80 glass border border-zinc-800 rounded-2xl shadow-2xl z-50 overflow-hidden">
+        <div class="p-4 border-b border-zinc-800 flex justify-between items-center">
+            <span class="text-[10px] font-bold text-zinc-500 uppercase mono">Signals</span>
+            <a href="#" class="text-[9px] text-blue-500 hover:underline">Clear All</a>
+        </div>
+        
+        <div class="max-h-96 overflow-y-auto">
+            @forelse(auth()->user()->notifications->take(5) as $notification)
+                <div class="p-4 border-b border-zinc-900/50 hover:bg-zinc-800/30 transition-all cursor-pointer">
+                    <p class="text-xs text-zinc-300">{{ $notification->data['message'] }}</p>
+                    <p class="text-[10px] text-white font-bold mt-1">{{ $notification->data['task_title'] ?? $notification->date['title'] ?? 'System Alert'}}</p>
+                    <p class="text-[9px] text-zinc-600 mt-2 mono uppercase">{{ $notification->created_at->diffForHumans() }}</p>
+                </div>
+            @empty
+                <div class="p-8 text-center text-zinc-600 italic text-xs">No active signals</div>
+            @endforelse
+        </div>
+    </div>
+</div>
                     <div class="flex items-center space-x-3">
                         <div class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full"></div>
                         <span class="text-white">{{ Auth::user()->name }}</span>

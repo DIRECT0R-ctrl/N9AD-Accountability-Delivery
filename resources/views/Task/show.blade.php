@@ -13,7 +13,7 @@
     </a>
 
     <span class="text-gray-700">/</span>
-
+    
     <span class="text-gray-400 uppercase tracking-widest text-xs">
         Protocol #{{ str_pad($task->id,4,'0',STR_PAD_LEFT) }}
     </span>
@@ -22,9 +22,18 @@
 
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
+<!-- REJECTION FEEDBACK: Visibility for Employee/Manager -->
+@if($task->status === 'rejected' && $task->rejection_comment)
+    <div class="mb-6 p-6 bg-rose-500/10 border border-rose-500/20 rounded-2xl flex gap-4 items-start animate-pulse">
+        <i class="fas fa-exclamation-triangle text-rose-500 mt-1"></i>
+        <div>
+            <h5 class="text-rose-500 font-bold text-[10px] uppercase tracking-widest mb-1 font-mono">Rejection Protocol Feedback</h5>
+            <p class="text-zinc-300 text-sm italic leading-relaxed">"{{ $task->rejection_comment }}"</p>
+        </div>
+    </div>
+@endif
 <!-- LEFT -->
 <div class="lg:col-span-2 space-y-6">
-
 <!-- TASK HEADER -->
 <div class="glass rounded-2xl p-8 card-hover">
     <h1 class="text-3xl font-bold text-white mb-4">
@@ -255,33 +264,59 @@ Task Metadata
 
 </div>
 
-
 @if(auth()->user()->isManager() || auth()->user()->isAdmin())
-
-<div class="space-y-3">
-
 @if($task->status === 'submitted')
-<div class="flex gap-4 mt-8">
-        <!-- Approve -->
-        <form action="{{ route('task.validate', $task) }}" method="POST" class="flex-1">
-            @csrf
-            @method('PATCH')
-            
-            <button class="w-full py-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded-2xl font-bold shadow-lg shadow-emerald-900/20 transition-all">
-                APPROVE DELIVERY
-            </button>
 
- </form>
+<div class="glass rounded-2xl p-5 border border-zinc-800 mt-8 space-y-4">
 
-        <!-- Reject -->
-        <form action="{{ route('task.reject', $task) }}" method="POST" class="flex-1">
-            @csrf
-            @method('PATCH')
-            <button class="w-full py-4 bg-zinc-800 hover:bg-rose-900/50 text-rose-500 rounded-2xl font-bold border border-zinc-700 transition-all">
-                Reject Protocol
-            </button>
-        </form>
-    </div>
+<p class="text-[10px] mono uppercase text-zinc-500 tracking-widest">
+Manager Validation Panel
+</p>
+
+<!-- APPROVE -->
+<form action="{{ route('task.validate', $task) }}" method="POST">
+@csrf
+@method('PATCH')
+
+<button class="w-full py-3 bg-emerald-600/90 hover:bg-emerald-500 
+rounded-xl font-bold text-[11px] tracking-widest uppercase
+transition-all border border-emerald-500/30
+shadow-lg shadow-emerald-900/20">
+
+✓ Validate Delivery Protocol
+
+</button>
+</form>
+
+<!-- REJECT -->
+<form action="{{ route('task.reject', $task) }}" method="POST"
+class="space-y-3 pt-3 border-t border-zinc-800">
+@csrf
+@method('PATCH')
+
+<label class="text-[9px] mono text-rose-500 uppercase tracking-widest block">
+Rejection Commentary
+</label>
+
+<textarea name="comment" 
+required
+placeholder="Explain why protocol is rejected..."
+class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-3 
+text-xs text-white focus:border-rose-500 outline-none h-20"></textarea>
+
+<button type="submit"
+class="w-full py-3 bg-rose-600/90 hover:bg-rose-500 
+rounded-xl font-bold text-[11px] tracking-widest uppercase
+transition-all border border-rose-500/30
+shadow-lg shadow-rose-900/20">
+
+Reject Protocol
+
+</button>
+
+</form>
+
+</div>
 
 @endif
 
@@ -303,7 +338,7 @@ Edit Task
 
 <!-- EMPLOYEE PROOF PREVIEW -->
 @if($task->proof && auth()->id() === $task->assignee_id)
-    <div class="glass rounded-2xl p-6 border border-zinc-800 mt-6">
+    <div class="glass rounded-2xl p-6 border border-zinc-800 mt-8 pt-8">
         <div class="flex items-center justify-between mb-4">
             <h3 class="text-sm font-bold text-white uppercase tracking-widest mono">My Submission</h3>
             <span class="text-[10px] text-zinc-500 mono">{{ $task->proof->created_at->diffForHumans() }}</span>

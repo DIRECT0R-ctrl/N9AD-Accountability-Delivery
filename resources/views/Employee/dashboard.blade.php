@@ -3,7 +3,7 @@
 @section('content')
 
 <section class="py-8">
-<div class="max-w-5xl mx-auto px-6">
+<div class="max-w-5xl mx-auto px-8 mt-8 pt-8">
 
 <!-- header -->
 <div class="mb-8">
