@@ -129,7 +129,7 @@ Each role has different permissions for:
 
 ---
 
-# Databsae Tables
+# Database Tables
 
 * users
 * rolse
