@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="min-h-screen pt-24">
+<section class="min-h-screen pt-8 mt-8">
 <div class="max-w-5xl mx-auto px-6">
 
 <!-- header -->
