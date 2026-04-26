@@ -10,10 +10,24 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-#[Fillable(['name', 'email', 'password', 'role_id'])]
+// #[Fillable(['name', 'email', 'password', 'role_id'])]
+
+/*protected $fillable = [
+    'name',
+    'email',
+    'password',
+    'role_id'
+];*/
+
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'role_id'
+    ];
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
@@ -37,7 +51,7 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        return $this->role->name === 'admin';
+        return $this->role?->name === 'admin';
     }
 
     public function isManager()
