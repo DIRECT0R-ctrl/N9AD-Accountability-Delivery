@@ -17,6 +17,21 @@ Route::get('/admin/dashboard', [App\Http\Controllers\TaskController::class, 'ind
 
 
 
+use App\Http\Controllers\AdminController;
+
+Route::middleware(['auth'])->prefix('admin')->group(function () {
+    Route::get('/users', [AdminController::class, 'index'])->name('admin.users.index');
+    Route::post('/users', [AdminController::class, 'store'])->name('admin.users.store');
+    Route::patch('/users/{user}', [AdminController::class, 'update'])->name('admin.users.update');
+    Route::delete('/users/{user}', [AdminController::class, 'destroy'])->name('admin.users.destroy');
+});
+
+
+
+
+
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
