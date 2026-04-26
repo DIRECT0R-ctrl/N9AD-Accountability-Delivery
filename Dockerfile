@@ -1,23 +1,29 @@
-FROM dunglas/frankenphp:php8.4
+# 1. The Base Image (PHP 8.4 + FrankenPHP for high speed)
+FROM dunglas/frankenphp:1.3-php8.4-bookworm
 
+# 2. Install dependencies (Zip, PostgreSQL, etc.)
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+    unzip \
+    && docker-php-ext-install pdo pdo_pgsql
+
+# 3. Copy your code into the container
+COPY . /app
+
+# 4. Set the working directory
 WORKDIR /app
 
-COPY . .
+# 5. Install Composer dependencies
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN composer install --optimize-autoloader --no-dev
 
-RUN apt-get update && apt-get install -y \
-    git unzip zip curl nodejs npm
+# 6. Build the UI (Vite)
+# (Note: This assumes you have node/npm installed in your local machine to build first,
+# OR we add them to the container. Let's keep it simple: build locally first)
+RUN apt-get install -y nodejs npm && npm install && npm run build
 
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# 7. Final adjustments
+RUN php artisan config:cache && php artisan route:cache
 
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader
-
-RUN npm install && npm run build || true
-
-RUN php artisan key:generate || true
-RUN php artisan config:clear || true
-RUN php artisan route:clear || true
-RUN php artisan view:clear || true
-
-EXPOSE 8080
-
-CMD ["frankenphp", "php-server", "-r", "public/"]
+# 8. Start the engine
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]
