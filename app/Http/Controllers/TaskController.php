@@ -152,7 +152,16 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
+        abort_if(auth()->user()->isEmployee(), 403, 'error : manager clearance');
+
+        if ($task->proof) {$task->proof->delete();}
+
+
         $task->delete();
+
+        
+
+        return redirect()->route('task.index')->with('success');
     }
 
     public function validateTask(Request $request, Task $task)

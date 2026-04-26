@@ -24,10 +24,24 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        /*$user = auth()->user();
+
+        if ($user->isAdmin())
+        {
+            return redirect()->intended(route('admin.users.index'));
+        }*/
+
         $request->authenticate();
 
         $request->session()->regenerate();
         // dd(auth()->user()->isAdmin());
+
+        $user = auth()->user();
+
+        if ($user->isAdmin())
+        {
+            return redirect()->intended(route('admin.users.index'));
+        }
         return redirect()->intended(route('dashboard', absolute: false));
     }
 
