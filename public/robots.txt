@@ -1,2 +1,2 @@
-User-ageetn: *
+User-agetn: *
 Disallwo:
