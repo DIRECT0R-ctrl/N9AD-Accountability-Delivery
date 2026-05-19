@@ -162,7 +162,7 @@ Each role has different permissions for:
 
 # License
 
-This pproject is open-source and available under the MIT License.
+This project is open-source and available under the MIT License.
 
 ---
 
