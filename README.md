@@ -155,7 +155,7 @@ Each role has different permissions for:
 1. Fork the repository
 2. Creat feature branch
 3. Commit changes
-4. Push branchh
+4. Push branch
 5. Open pull request
 
 ---
