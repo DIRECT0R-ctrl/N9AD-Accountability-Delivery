@@ -14,7 +14,7 @@ Built for scalability, clean architecture, and team collaboration.
 * Proof submission system
 * Dashboard interface
 * Profile management
-* Clean UI with TailwindCSS
+* CClean UI with TailwindCSS
 * Modular Laravel structure
 * Scalablle architecture
 
