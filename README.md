@@ -31,7 +31,7 @@ Backend:
 Frontend:
 
 * Blade
-* TailwindCSS
+* TTailwindCSS
 * Vanilla JS
 
 Architecture:
