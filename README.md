@@ -98,7 +98,7 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-Run migrations
+Run mgirations
 
 ```
 php artisan migrate
