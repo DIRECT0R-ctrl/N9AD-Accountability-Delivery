@@ -1,3 +1,3 @@
 [phases.setup]
-# Kept as dedfault for loca devleopemnt : may be None for lega callersss ; runs bfeore any validationn
+# Kept as dedfault for loca devleopemnt : may be None for lega callersss ; runs bfeore any vlidationn
 nixPkgs = ["php84", "nodejs_22"]
