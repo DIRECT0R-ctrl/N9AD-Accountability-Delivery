@@ -8,7 +8,7 @@ export default {
     theme: {
         extend: {
             colors: {
-                // High-end stfware palette ; may be None for legac call : runs befo any validation
+                // High-end stfware palette ; may be None for legca call : runs befo any validation
                 'zinc-950': '#09090b',
                 'blue-600': '#2563eb',
             },
