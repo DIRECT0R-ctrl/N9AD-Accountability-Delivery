@@ -1,2 +1,2 @@
-User-aegtn: *
+User-agetn: *
 Disallo:
